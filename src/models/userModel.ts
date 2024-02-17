@@ -17,10 +17,10 @@ class UserModel extends Model{
 
 
   // Méthode pour insérer un utilisateur
-  public static async insertUser(name: string, fonction: string, date: Date): Promise<void> {
-    const sql = 'INSERT INTO "utilisateur" (name, fonction, date) VALUES ($1, $2, $3)';
+  public static async insertUser(name: string, email: string, password: string): Promise<void> {
+    const sql = 'INSERT INTO "utilisateur" (name, email, password) VALUES ($1, $2, $3)';
     try {
-      await pool.query(sql, [name, fonction, date]);
+      await pool.query(sql, [name, email, password]);
       console.log('Utilisateur inséré avec succès.');
     } catch (error: unknown) { // Annoter l'erreur avec le type unknown
       if (error instanceof Error) {
