@@ -6,21 +6,23 @@ class ExpenseModel extends Model {
     amount: number;
     date: Date;
     comment: string;
-    user_id: number;
+    category: string;
+    utilisateur_id: number;
 
-    constructor(name: string, amount: number, date: Date, comment: string, user_id: number) {
+    constructor(name: string, amount: number, date: Date, comment: string, category: string, utilisateur_id: number) {
         super();
         this.name = name;
         this.amount = amount;
         this.date = date;
         this.comment = comment;
-        this.user_id = user_id;
+        this.category = category;
+        this.utilisateur_id = utilisateur_id;
     }
 
-    public static async insertExpense(name: string, amount: number, date: Date, comment: string, user_id: number): Promise<void> {
-        const sql = 'INSERT INTO "expense" (name, amount, date, comment, user_id) VALUES ($1, $2, $3, $4, $5)';
+    public static async insertExpense(name: string, amount: number, date: Date, comment: string, category: string, utilisateur_id: number): Promise<void> {
+        const sql = 'INSERT INTO "expense" (name, amount, date, comment, category, utilisateur_id) VALUES ($1, $2, $3, $4, $5, $6)';
         try {
-            await pool.query(sql, [name, amount, date, comment, user_id]);
+            await pool.query(sql, [name, amount, date, comment, category, utilisateur_id]);
             console.log('Dépense insérée avec succès.');
         } catch (error: unknown) {
             if (error instanceof Error) {

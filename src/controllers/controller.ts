@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import UserModel from '../models/UserModel';
-import ExpenseModel from '../models/ExpenseModel';
+import ExpenseModel from '../models/expenseModel';
 
 class UserAndExpenseController {
     // Ajouter un nouvel utilisateur
@@ -26,9 +26,9 @@ class UserAndExpenseController {
 
     // Ajouter une nouvelle dépense
     public static async addExpense(req: Request, res: Response): Promise<void> {
-        const { name, amount, date, comment, user_id } = req.body;
+        const { name, amount, date, comment, category, utilisateur_id } = req.body;
         try {
-            await ExpenseModel.insertExpense(name, amount, date, comment, user_id);
+            await ExpenseModel.insertExpense(name, amount, date, comment, category, utilisateur_id);
             res.status(201).json({ message: 'Dépense ajoutée avec succès' });
         } catch (error) {
             res.status(500).json({ error: 'Erreur lors de l’ajout de la dépense' });
@@ -47,7 +47,7 @@ class UserAndExpenseController {
     }
 
     // Récupérer une dépense par ID
-    public static async getAllExpense(req: Request, res: Response): Promise<void> {
+    public static async getExpenseById(req: Request, res: Response): Promise<void> {
         try {
             const expense = await ExpenseModel.getExpenseById(Number());
             if (expense) {
@@ -57,6 +57,16 @@ class UserAndExpenseController {
             }
         } catch (error) {
             res.status(500).json({ error: 'Erreur lors de la récupération de la dépense' });
+        }
+    }
+
+    // Récupérer toutes les dépenses
+    public static async getAllExpense(req: Request, res: Response): Promise<void> {
+        try {
+            const expenses = await ExpenseModel.getAllExpense();
+            res.status(200).json(expenses);
+        } catch (error) {
+            res.status(500).json({ error: 'Erreur lors de la récupération des dépenses' });
         }
     }
 }
