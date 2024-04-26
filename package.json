@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node dist/server.js",
-    "start": "nodemon src/server.ts",
-    "dev2": "ts-node src/server.ts",
+    "dev": "node dist/index.js",
+    "start": "nodemon src/index.ts",
+    "dev2": "ts-node src/index.ts",
     "build": "tsc",
     "watch:build": "tsc -w"
   },
