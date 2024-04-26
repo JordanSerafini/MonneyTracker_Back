@@ -14,7 +14,7 @@ router.post('/expense', controller.addExpense);
 router.get('/expense', controller.getAllExpense);
 router.delete('/expense/:id', controller.deleteExpense);
 
-router.get('/test', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const query = `
       SELECT 
