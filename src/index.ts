@@ -14,10 +14,10 @@ const app = express();
 // CORS
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://monney-tracker.netlify.app"], // Origines autorisées
-  methods: ["GET", "POST", "PUT", "DELETE"], // Méthodes HTTP autorisées
-  allowedHeaders: ["Content-Type", "Authorization"], // Headers autorisés
-  credentials: true // Permet les requêtes avec des cookies
+  origin: ["http://localhost:5173", "https://monney-tracker.netlify.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true 
 };
 
 app.use(cors(corsOptions));
