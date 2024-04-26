@@ -3,9 +3,8 @@ import router from "./routes/routes";
 import dotenv from "dotenv";
 import cors from 'cors';
 
-const PORT = process.env.PORT || 5000;
-// Setting up environment variables
 dotenv.config();
+const PORT = process.env.PORT || 3000;
 
 // Create express application
 const app = express();
@@ -27,7 +26,7 @@ app.use(express.static("node_modules"));
 
 // Setting the middleware to manage POST data
 // Middleware is a function that runs between the request and the response
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
