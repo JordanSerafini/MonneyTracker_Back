@@ -1,7 +1,7 @@
 import { pool } from '../database/pool';
 import Model from './models';
 
-class UserModel extends Model{
+export class UserModel extends Model{
   public id: number;
   public name: string;
   public email: string;
