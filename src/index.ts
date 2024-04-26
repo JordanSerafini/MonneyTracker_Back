@@ -10,9 +10,7 @@ dotenv.config();
 // Create express application
 const app = express();
 
-
 // CORS
-
 const corsOptions = {
   origin: ["http://localhost:5173", "https://monney-tracker.netlify.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -21,11 +19,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-
-app.use(cors(corsOptions));
-
-
 
 // Setting the middleware to serve static files
 app.use(express.static("public"));
